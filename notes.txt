@@ -1,0 +1,27 @@
+
+pot speed
+pot envelope width (max=no envelope/flat)
+pot envelope position
+
+3/way rotary switch, minor/major/tone
+toggle enter/exit +button fill/empty
+
+volume
+
+
+
+Tables:
+
+
+Minor
+20/20
+24/20
+30/20
+
+Major
+20/20
+25/20
+30/20
+
+
+tables are 512bytes/root cycle = 10240 bytes
