@@ -85,7 +85,7 @@ void console_init(void)
 void console_main(void)
 {
 	enum input_result_enum success;
-	int option;
+	int option, tempint1, tempint2;
 
 	char tempchar, finished=FALSE;
 	do
@@ -95,10 +95,18 @@ void console_main(void)
 ****** Main  Menu ******\r\n\
 \r\n\
 1. Upload new firmware\r\n\
+2. Speed set\r\n\
+3. Envelope set\r\n\
+4. Enter\r\n\
+5. Exit\r\n\
+6. Finalize\r\n\
+7. Tonal\r\n\
+8. Minor\r\n\
+9. Major\r\n\
 0. exit\r\n\
 "));
 
-		success=getint(&option, 0, 1);
+		success=getint(&option, 0, 9);
 
 		//if input failed, exit menu, or refresh menu
 		if(success == INPUT_RESULT_TIMEOUT || success == INPUT_RESULT_ABORTED)
@@ -109,6 +117,35 @@ void console_main(void)
 			{
 				case 1:
 					bootload();
+					break;
+				case 2:
+					getint(&option, -40000, +40000);
+					sheppard_speedset(option);
+					break;
+				case 3:
+					TEXTOUT_P(PSTR("Center "));
+					getint(&tempint1, 0, 255);
+					TEXTOUT_P(PSTR("Width "));
+					getint(&tempint2, 1, 200);
+					sheppard_envelopeset(tempint1, tempint2);
+					break;
+				case 4:
+					sheppard_enter();
+					break;
+				case 5:
+					sheppard_exit();
+					break;
+				case 6:
+					sheppard_finalize();
+					break;
+				case 7:
+					sheppard_styleset(STYLE_TONE);
+					break;
+				case 8:
+					sheppard_styleset(STYLE_MINOR);
+					break;
+				case 9:
+					sheppard_styleset(STYLE_MAJOR);
 					break;
 			};
 		};//INPUT_RESULT_NIL will simply refresh

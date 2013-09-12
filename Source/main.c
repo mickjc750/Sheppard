@@ -73,6 +73,7 @@ void SysTick_Handler(void)
 
 void main_fly(void)
 {
+	sheppard_process();
 }
 
 int main(void)
@@ -100,20 +101,13 @@ int main(void)
 	SysTick_Config(SystemCoreClock * 0.01); //system_stm32f10x.c
 
 	while(1)
-	{
-		while(!tickflag);
-		tickflag=FALSE;
-		sheppard_timer();
-	};
-	/*
-	while(1)
     {
 		uart1_fifo_rx_ptr = &console_fifo_tx;
 		console_device = CONSOLE_DEVICE_UART1;
 		while(1)
 			console_main();
     };
-*/
+
 	return 0;
 }
 
