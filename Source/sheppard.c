@@ -1,4 +1,5 @@
 /*
+
 	9 Octaves
 	  20-40
 	  40-80
@@ -9,13 +10,6 @@
 	1280-2560
 	2560-5120
 	5120-10240
-
-Minor chord is:
-1/1	440
-6/5 528
-3/2 660
-
-Major chord
 
 */
 
@@ -35,8 +29,8 @@ Major chord
 	struct	tone_struct
 	{
 			uint32_t	q;	//angle
-			uint32_t	f;	//frequency 1=5.13578uHz ... 			3894249=20Hz
-			uint32_t	p;	//pitch = ln(f)<<16  1 octave = 45426	 994510=20Hz 1403344=10240Hz
+			uint32_t	f;	//frequency 1=102.6783uHz ... 			194783 = 20Hz
+			uint32_t	p;	//pitch = ln(f)<<16  1 octave = 45426	798205 = 20Hz 1207040=10240Hz
 	//		f=exp(p/65536)
 	};
 
@@ -51,12 +45,12 @@ Major chord
 	// (p-994510)/1598 gives 0-255 for indexing envelope
 	static uint16_t		envelope[256];	//amplitude values 0-4095
 
-	static struct tone_struct tone[9];
+	static struct tone_struct tone[8];
 	static uint8_t	root=0;	//which tone is the root tone (lowest F)
 	
 	//offset=0, amplitude==32767 (as 32.0)
-	static const int32_t sin_table[1024]={
-	#include "sin_table.txt"
+	static const int16_t sin_table[16384]={
+	#include "Minor.csv"
 	};
 
 //********************************************************************************************************
@@ -81,11 +75,11 @@ void TIM6_DAC_IRQHandler(void)
 	//derive upper octaves from root
 	f=tone[root].f;
 	p=tone[root].p;
-	temp=8;
+	temp=7;
 	while(temp--)
 	{
 		root++;
-		if(root==9)
+		if(root==8)
 			root=0;
 		f<<=1;			//double frequency
 		p+=45426;		//increase pitch by 1 octave
@@ -93,7 +87,7 @@ void TIM6_DAC_IRQHandler(void)
 		tone[root].p=p;
 	};
 	root++;
-	if(root==9)
+	if(root==8)
 		root=0;
 
 	//advance angles
@@ -105,21 +99,19 @@ void TIM6_DAC_IRQHandler(void)
 	tone[5].q += tone[5].f;
 	tone[6].q += tone[6].f;
 	tone[7].q += tone[7].f;
-	tone[8].q += tone[8].f;
 
-	// (p-994510)/1598 gives 0-255 for indexing envelope
+	// (p-798205)/1603 gives 0-255 for indexing the envelope
 
 	//sum outputs
 	x=0;
-	x += sin_table[tone[0].q>>22]*envelope[(tone[0].p-994510)/1598];
-	x += sin_table[tone[1].q>>22]*envelope[(tone[1].p-994510)/1598];
-	x += sin_table[tone[2].q>>22]*envelope[(tone[2].p-994510)/1598];
-	x += sin_table[tone[3].q>>22]*envelope[(tone[3].p-994510)/1598];
-	x += sin_table[tone[4].q>>22]*envelope[(tone[4].p-994510)/1598];
-	x += sin_table[tone[5].q>>22]*envelope[(tone[5].p-994510)/1598];
-	x += sin_table[tone[6].q>>22]*envelope[(tone[6].p-994510)/1598];
-	x += sin_table[tone[7].q>>22]*envelope[(tone[7].p-994510)/1598];
-	x += sin_table[tone[8].q>>22]*envelope[(tone[8].p-994510)/1598];
+	x += sin_table[tone[0].q>>18]*envelope[(tone[0].p-798205)/1603];
+	x += sin_table[tone[1].q>>18]*envelope[(tone[1].p-798205)/1603];
+	x += sin_table[tone[2].q>>18]*envelope[(tone[2].p-798205)/1603];
+	x += sin_table[tone[3].q>>18]*envelope[(tone[3].p-798205)/1603];
+	x += sin_table[tone[4].q>>18]*envelope[(tone[4].p-798205)/1603];
+	x += sin_table[tone[5].q>>18]*envelope[(tone[5].p-798205)/1603];
+	x += sin_table[tone[6].q>>18]*envelope[(tone[6].p-798205)/1603];
+	x += sin_table[tone[7].q>>18]*envelope[(tone[7].p-798205)/1603];
 
 	x /= 603961; //gives +/- 2000
 
@@ -131,20 +123,20 @@ void TIM6_DAC_IRQHandler(void)
 
 void sheppard_timer(void)
 {
-	static uint32_t p=1014510;
+	static uint32_t p=798205;
 	static uint32_t f;
 
 	GPIO_SetBits(GPIOC, GPIO_Pin_9);
 
 	p=p-45;
-	if(p<994510)	//below 20Hz?
+	if(p<798205)	//below 20Hz?
 	{
 		p+=45426;
 		f=exp(((double)p)/65536);
 		ATOMIC_BLOCK
 		{
 			root++;
-			if(root==9)
+			if(root==8)
 				root=0;
 			tone[root].f=f;
 			tone[root].p=p;
@@ -177,8 +169,8 @@ void sheppard_init(void)
 		envelope[tempint++]=4095;
 	}while(tempint!=256);
 
-	tone[0].f = 3894249;
-	tone[0].p =  994510;
+	tone[0].f = 194783;
+	tone[0].p =  798205;
 
 	// Enable DAC and I/O and TMR6 clocks
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);
