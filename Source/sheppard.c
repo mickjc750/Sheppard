@@ -78,8 +78,8 @@ gaussian function for 256 element envelope
 	#include "Major.csv"
 	};
 
-	static const int16_t tone_table[16384]={
-	#include "Tone20.csv"
+	static const int16_t tone_table[4096]={
+	#include "Tone5.csv"
 	};
 
 //********************************************************************************************************
@@ -237,22 +237,22 @@ void TIM6_DAC_IRQHandler(void)
 	}
 	else if(style == STYLE_TONE)
 	{
-		x += tone[0].active * tone_table[tone[0].q>>18]*envelope[(tone[0].p-P_MIN)/P_SCALE];
-		x += tone[1].active * tone_table[tone[1].q>>18]*envelope[(tone[1].p-P_MIN)/P_SCALE];
-		x += tone[2].active * tone_table[tone[2].q>>18]*envelope[(tone[2].p-P_MIN)/P_SCALE];
-		x += tone[3].active * tone_table[tone[3].q>>18]*envelope[(tone[3].p-P_MIN)/P_SCALE];
-		x += tone[4].active * tone_table[tone[4].q>>18]*envelope[(tone[4].p-P_MIN)/P_SCALE];
-		x += tone[5].active * tone_table[tone[5].q>>18]*envelope[(tone[5].p-P_MIN)/P_SCALE];
-		x += tone[6].active * tone_table[tone[6].q>>18]*envelope[(tone[6].p-P_MIN)/P_SCALE];
-		x += tone[7].active * tone_table[tone[7].q>>18]*envelope[(tone[7].p-P_MIN)/P_SCALE];
-		x += tone[8].active * tone_table[tone[8].q>>18]*envelope[(tone[8].p-P_MIN)/P_SCALE];
+		x += tone[0].active * tone_table[(tone[0].q>>18)&4095]*envelope[(tone[0].p-P_MIN)/P_SCALE];
+		x += tone[1].active * tone_table[(tone[1].q>>18)&4095]*envelope[(tone[1].p-P_MIN)/P_SCALE];
+		x += tone[2].active * tone_table[(tone[2].q>>18)&4095]*envelope[(tone[2].p-P_MIN)/P_SCALE];
+		x += tone[3].active * tone_table[(tone[3].q>>18)&4095]*envelope[(tone[3].p-P_MIN)/P_SCALE];
+		x += tone[4].active * tone_table[(tone[4].q>>18)&4095]*envelope[(tone[4].p-P_MIN)/P_SCALE];
+		x += tone[5].active * tone_table[(tone[5].q>>18)&4095]*envelope[(tone[5].p-P_MIN)/P_SCALE];
+		x += tone[6].active * tone_table[(tone[6].q>>18)&4095]*envelope[(tone[6].p-P_MIN)/P_SCALE];
+		x += tone[7].active * tone_table[(tone[7].q>>18)&4095]*envelope[(tone[7].p-P_MIN)/P_SCALE];
+		x += tone[8].active * tone_table[(tone[8].q>>18)&4095]*envelope[(tone[8].p-P_MIN)/P_SCALE];
 	};
 
 	x /= envelope_volume;
 	x /= 19; //gives +/- ~~2000 I think
 
 	DAC->DHR12R1 = x+2048;
-	DAC->DHR12R2 = x+2048;
+	DAC->DHR12R2 = 2048-x;
 
 	GPIO_ResetBits(GPIOC, GPIO_Pin_8);
 }
