@@ -10,6 +10,7 @@
 #include "stm32f10x_flash.h"
 #include "stm32f10x_dac.h"
 #include "stm32f10x_tim.h"
+#include "stm32f10x_adc.h"
 
 #include "fifo.h"
 #include "misc.h"
@@ -18,4 +19,6 @@
 #include "console.h"
 #include "atomic.h"
 #include "sheppard.h"
+#include "interface.h"
+
 

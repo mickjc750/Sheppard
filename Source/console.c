@@ -100,13 +100,13 @@ void console_main(void)
 4. Enter\r\n\
 5. Exit\r\n\
 6. Finalize\r\n\
-7. Tonal\r\n\
+7. Tone\r\n\
 8. Minor\r\n\
 9. Major\r\n\
 0. exit\r\n\
 "));
 
-		success=getint(&option, 0, 9);
+		success=getint(&option, 0, 99);
 
 		//if input failed, exit menu, or refresh menu
 		if(success == INPUT_RESULT_TIMEOUT || success == INPUT_RESULT_ABORTED)
@@ -147,6 +147,43 @@ void console_main(void)
 				case 9:
 					sheppard_styleset(STYLE_MAJOR);
 					break;
+				case 10:
+					while(1)
+					{
+						if(interface_update_speed)
+						{
+							interface_update_speed=FALSE;
+							TEXTOUT("Speed = ");
+							TEXTOUT_INT(interface_output.speed);
+							TEXTOUT("\r\n");
+							time=2;
+							while(time)
+								main_fly();
+						};
+
+						if(interface_update_window)
+						{
+							interface_update_window=FALSE;
+							if(interface_output.width_onoff)
+							{
+								TEXTOUT("Width = ");
+								TEXTOUT_INT(interface_output.width);
+								TEXTOUT("\r\nCenter = ");
+								TEXTOUT_INT(interface_output.center);
+								TEXTOUT("\r\n\r\n");
+								sheppard_envelopeset(interface_output.center, interface_output.width);
+							}
+							else
+							{
+								TEXTOUT("Window off\r\n");
+								sheppard_envelopeset(-1, 0);
+							};
+							time=2;
+							while(time)
+								main_fly();
+						};
+						main_fly();
+					};
 			};
 		};//INPUT_RESULT_NIL will simply refresh
 

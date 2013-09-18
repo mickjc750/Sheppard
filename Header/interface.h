@@ -3,18 +3,28 @@
 // Public defines
 //********************************************************************************************************
 
-	#define	TRUE	1
-	#define FALSE	0
+	struct interface_struct
+	{
+		int32_t		speed;
+		int32_t		center;
+		int32_t		width;
+		uint8_t		width_onoff;
 
-	#define	TIMER_TICK .01
+	};
 
 //********************************************************************************************************
 // Public variables
 //********************************************************************************************************
 
+	extern struct interface_struct	interface_output;
+	extern uint8_t	interface_update_speed;
+	extern uint8_t	interface_update_window;
+
 //********************************************************************************************************
 // Public prototypes
 //********************************************************************************************************
 
-	int main(void);
-	void main_fly();
+	void interface_timer(void);
+	void interface_init(void);
+	void interface_process(void);
+

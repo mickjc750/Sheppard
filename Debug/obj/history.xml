@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -Os -std=c99 -g -c -DSTM32F10X_MD_VL -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSTM32F100RB -I. -Icmsis -Icmsis_boot -Istm_lib -Istm_lib\inc">
+      <target file="fifo.o" lastModified="1412b0f0e48">
+         <source file="..\..\Source\fifo.c" lastModified="138649ab1c0"/>
+      </target>
+      <target file="stm32f10x_rcc.o" lastModified="1412b0f0678">
+         <source file="..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="138ac9dc890"/>
+      </target>
+      <target file="core_cm3.o" lastModified="1412b0efea8">
+         <source file="..\..\cmsis\core_cm3.c" lastModified="138ac9dc0c0"/>
+      </target>
+      <target file="stm32f10x_dac.o" lastModified="1412b0f0678">
+         <source file="..\..\stm_lib\src\stm32f10x_dac.c" lastModified="14106ed21d0"/>
+      </target>
+      <target file="misc.o" lastModified="1412b0f1230">
+         <source file="..\..\Source\misc.c" lastModified="137f3592a00"/>
+      </target>
+      <target file="atomic.o" lastModified="1412b0f0290">
+         <source file="..\..\Source\atomic.c" lastModified="13a4a28c9b0"/>
+      </target>
+      <target file="stm32f10x_flash.o" lastModified="1412b0f0e48">
+         <source file="..\..\stm_lib\src\stm32f10x_flash.c" lastModified="137f3da3910"/>
+      </target>
+      <target file="uart.o" lastModified="1412b0f0290">
+         <source file="..\..\Source\uart.c" lastModified="138acf650a0"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="1412b0f0290">
+         <source file="..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="138ac9dc890"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="1412b0f0290">
+         <source file="..\..\cmsis_boot\system_stm32f10x.c" lastModified="138ac9dc0c0"/>
+      </target>
+      <target file="syscalls.o" lastModified="1412b0f0e48">
+         <source file="..\..\syscalls\syscalls.c" lastModified="138aecc7800"/>
+      </target>
+      <target file="interface.o" lastModified="1412b0f1618">
+         <source file="..\..\Source\interface.c" lastModified="1412ad10b48"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="1412b0efea8">
+         <source file="..\..\stm_lib\src\stm32f10x_tim.c" lastModified="14106ed7ba8"/>
+      </target>
+      <target file="console.o" lastModified="1412b0f1230">
+         <source file="..\..\Source\console.c" lastModified="1412ad32e28"/>
+      </target>
+      <target file="stm32f10x_adc.o" lastModified="1412b0f0a60">
+         <source file="..\..\stm_lib\src\stm32f10x_adc.c" lastModified="1411a0b4440"/>
+      </target>
+      <target file="startup_stm32f10x_md_vl.o" lastModified="1412b0efea8">
+         <source file="..\..\cmsis_boot\startup\startup_stm32f10x_md_vl.c" lastModified="138ac9dc0c0"/>
+      </target>
+      <target file="sheppard.o" lastModified="1412b0f1a00">
+         <source file="..\..\Source\sheppard.c" lastModified="1412aea3898"/>
+      </target>
+      <target file="stm32f10x_usart.o" lastModified="1412b0f0a60">
+         <source file="..\..\stm_lib\src\stm32f10x_usart.c" lastModified="141071ad8f0"/>
+      </target>
+      <target file="main.o" lastModified="1412b0f0678">
+         <source file="..\..\Source\main.c" lastModified="1412b0ee738"/>
+      </target>
+   </processor>
+</history>

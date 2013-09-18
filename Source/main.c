@@ -1,40 +1,16 @@
 
 /*
 
-todo:
-re-check atomic access with both 16 & 32 bit, using different clock speeds and alignments
+Differential output on PA4 & PA5
 
-char = 1
-short = 2
-int = 4
-long = 4
-structs padded! :-( 16bit members are aligned to 4byte boundary
-Little Endian
+PC0 ADC1_IN10 Speed
+PC1 ADC1_IN11 Center
+PC2 ADC1_IN12 Width
 
-	Main project
-	Read/Write 32bit access is atomic, including indirect access
-	char 1 byte
-	int 4 bytes
-	long 4 bytes
-
-
-Thread mode	(from reset)	Privilege and Stack selected by CONTROL register,
-				reset default is Privileged and Main stack
-
-Handler mode	(during ISR)	Always privileged, always Main stack
-
-Unprivileged	can't use SCB, System Timer, or NVIC
-
-				can't use MSR MRS CPS instructions to access:
-				IPSR, EPSR, IEPSR, IAPSR, EAPSR, PSR, MSP,
-				PSP, PRIMASK, BASEPRI, BASEPRI_MAX, FAULTMASK, or CONTROL
-
-				can use MSR MRS to access:
-				APSR
-
-Privileged	can do everything.
-
-http://armcryptolib.das-labor.org/trac/wiki
+PA0	Select Major
+PA1	Select Tone	(both low selects Minor)
+PA2 Enter/Exit (1/0)
+PA3 Finish
 
 */
 
@@ -69,11 +45,14 @@ http://armcryptolib.das-labor.org/trac/wiki
 void SysTick_Handler(void)
 {
 	tickflag=TRUE;
+	console_timer();
+	interface_timer();
 }
 
 void main_fly(void)
 {
 	sheppard_process();
+	interface_process();
 }
 
 int main(void)
@@ -96,10 +75,27 @@ int main(void)
 
 	console_init();
 	sheppard_init();
+	interface_init();
 
 	//10mS system tick
 	SysTick_Config(SystemCoreClock * 0.01); //system_stm32f10x.c
 
+
+	while(1)
+	{
+		if(interface_update_window)
+		{
+			interface_update_window=FALSE;
+			if(interface_output.width_onoff)
+				sheppard_envelopeset(interface_output.center, interface_output.width);
+			else
+				sheppard_envelopeset(-1, 0);
+		};
+		main_fly();
+	};
+
+
+/*
 	while(1)
     {
 		uart1_fifo_rx_ptr = &console_fifo_tx;
@@ -108,6 +104,7 @@ int main(void)
 			console_main();
     };
 
+*/
 	return 0;
 }
 
