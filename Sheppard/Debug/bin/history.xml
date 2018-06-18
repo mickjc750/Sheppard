@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="5.4.1 -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=Sheppard.map -Os --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\Sheppard -TC:\CooCox\CoIDE\configuration\ProgramData\Sheppard/arm-gcc-link.ld -g -L..\..\.. -lm">
+      <target file="Sheppard.elf" lastModified="164131a938a">
+         <source file="..\obj\stm32f10x_tim.o" lastModified="16413101201"/>
+         <source file="..\obj\startup_stm32f10x_md_vl.o" lastModified="16413101266"/>
+         <source file="..\obj\core_cm3.o" lastModified="164131a8e11"/>
+         <source file="..\obj\atomic.o" lastModified="164131013c1"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="1641310145b"/>
+         <source file="..\obj\uart.o" lastModified="16413101524"/>
+         <source file="..\obj\template.o" lastModified="164131015b7"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="16413101680"/>
+         <source file="..\obj\stm32f10x_dac.o" lastModified="16413101738"/>
+         <source file="..\obj\main.o" lastModified="164131017fa"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="164131018e1"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="164131019d7"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="16413101ade"/>
+         <source file="..\obj\fifo.o" lastModified="16413101bf9"/>
+         <source file="..\obj\syscalls.o" lastModified="16413101c84"/>
+         <source file="..\obj\stm32f10x_flash.o" lastModified="16413101d9a"/>
+         <source file="..\obj\misc.o" lastModified="16413101e63"/>
+         <source file="..\obj\console.o" lastModified="16413101f90"/>
+         <source file="..\obj\interface.o" lastModified="1641310207e"/>
+         <source file="..\obj\sheppard.o" lastModified="16413102306"/>
+      </target>
+   </processor>
+</history>

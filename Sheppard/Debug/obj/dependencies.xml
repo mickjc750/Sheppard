@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard /I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard\stm_lib /I..\..\..\..\..\Users\micks\Documents\GitHub /I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard\Header /I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard\cmsis_boot /I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard\cmsis /I..\..\..\..\..\Users\micks\Documents /I..\..\..\..\..\Users\micks\Documents\GitHub\Sheppard\stm_lib\inc">
+      <source file="..\..\..\Header\uart.h" lastModified="1641309a5e4">
+      </source>
+      <source file="..\..\..\cmsis\core_cm3.h" lastModified="1641309adf9">
+      </source>
+      <source file="..\..\..\Header\misc.h" lastModified="1641309a5e4">
+      </source>
+      <source file="..\..\..\Source\console.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="1641309a658">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_dac.h" lastModified="1641309a648">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="1641309a65e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md_vl.c" lastModified="1641309a629">
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_adc.h" lastModified="1641309a648">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f10x.h" lastModified="1641309a638">
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="1641309a638">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\Source\sheppard.c" lastModified="1641309a619">
+         <include file="..\..\..\Header\includes.h"/>
+         <include file="..\..\..\Source\Minor.csv"/>
+         <include file="..\..\..\Source\Major.csv"/>
+         <include file="..\..\..\Tone5.csv"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\stm32f10x_conf.h" lastModified="1641309a638">
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_usart.h" lastModified="1641309a65e">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\Source\Minor.csv" lastModified="1641309a5fa">
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="1641309a66e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="1641309a66e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_flash.h" lastModified="1641309a648">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="1641309b60e">
+      </source>
+      <source file="..\..\..\Source\interface.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\Header\interface.h" lastModified="1641309a5e4">
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_flash.c" lastModified="1641309a65e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>
+      </source>
+      <source file="..\..\..\Source\fifo.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="1641309a65e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_dac.c" lastModified="1641309a65e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_dac.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\Header\console.h" lastModified="1641309a5d4">
+      </source>
+      <source file="..\..\..\cmsis_boot\stm32f10x.h" lastModified="1641309aa20">
+         <include file="..\..\..\cmsis\core_cm3.h"/>
+         <include file="..\..\..\cmsis_boot\system_stm32f10x.h"/>
+         <include file="..\..\..\cmsis_boot\stm32f10x_conf.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="1641309a65e">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\Header\fifo.h" lastModified="1641309a5d4">
+      </source>
+      <source file="..\..\..\Source\Major.csv" lastModified="1641309a5fa">
+      </source>
+      <source file="..\..\..\Source\main.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="1641309a648">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="1641309a658">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\template.c" lastModified="1641309a6c3">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\Header\main.h" lastModified="164130fe268">
+      </source>
+      <source file="..\..\..\Header\sheppard.h" lastModified="1641309a5e4">
+      </source>
+      <source file="..\..\..\Header\includes.h" lastModified="1641309b18c">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_gpio.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_usart.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_dac.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_tim.h"/>
+         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
+         <include file="..\..\..\Header\fifo.h"/>
+         <include file="..\..\..\Header\misc.h"/>
+         <include file="..\..\..\Header\uart.h"/>
+         <include file="..\..\..\Header\main.h"/>
+         <include file="..\..\..\Header\console.h"/>
+         <include file="..\..\..\Header\atomic.h"/>
+         <include file="..\..\..\Header\sheppard.h"/>
+         <include file="..\..\..\Header\interface.h"/>
+      </source>
+      <source file="..\..\..\Source\uart.c" lastModified="1641309a619">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\Header\atomic.h" lastModified="1641309a5d4">
+      </source>
+      <source file="..\..\..\Tone5.csv" lastModified="1641309a619">
+      </source>
+      <source file="..\..\..\Source\misc.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+      <source file="..\..\..\Source\atomic.c" lastModified="1641309a60a">
+         <include file="..\..\..\Header\includes.h"/>
+      </source>
+   </includePath>
+</dependencies>
